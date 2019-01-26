@@ -11,27 +11,25 @@ connection.connect((err)=>{
         console.log(err);
         return;
     }
-    console.log('ITS MONEY TIIIIIMMMEEE');
+    console.log('You have connected.');
     
 })
 
-connection.query('INSERT into messages(roomname) values (12);', (err,results,fields)=>{
-    if(err){
-        throw err;
-    }
-    else{
-        console.log('this is the results ', results)
-        console.log('this is the fields ', fields)
+// connection.query('INSERT into messages SET ?', {username: 1, roomname: 1}, (err,results,fields)=>{
+//     if(err){
+//         throw err;
+//     }
+//     else{
+//         console.log('this is the results ', results);
 
-    }
-} )
+//     }
+// } )
 // connection.query('SELECT * from messages', (err,results,fields)=>{
 //     if(err){
 //         throw err;
 //     }
 //     else{
-//         console.log('this is the results ', results)
-//         console.log('this is the fields ', fields)
+//         console.log('this is the results ', results);
 
 //     }
 // } )
