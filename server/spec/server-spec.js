@@ -50,15 +50,15 @@ describe('Persistent Node Chat Server', function() {
 
         // TODO: You might have to change this test to get all the data from
         // your message table, since this is schema-dependent.
-        var queryString = 'SELECT * FROM messages';
-        var queryArgs = [];
+        var queryString = 'SELECT * FROM `messages` WHERE `message` = ?';
+        var queryArgs = ['In mercy\'s name, three days is all I need.'];
 
         dbConnection.query(queryString, queryArgs, function(err, results) {
           // Should have one result:
           if(err) {
             throw err;
           }
-          console.log(results);
+          console.log('SPEC RESULTS ', results);
 
           expect(results.length).to.equal(1);
 
@@ -73,8 +73,12 @@ describe('Persistent Node Chat Server', function() {
 
   it('Should output all messages from the DB', function(done) {
     // Let's insert a message into the db
-       var queryString = "";
-       var queryArgs = [];
+       var queryString = "INSERT into messages SET ?";
+       var queryArgs = {
+          username: 'Person',
+          message: 'Men like you can never change!',
+          roomname: 'main'
+        };
     // TODO - The exact query string and query args to use
     // here depend on the schema you design, so I'll leave
     // them up to you. */

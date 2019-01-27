@@ -7,33 +7,29 @@ module.exports = {
         if(err){
           callback(err);
         } else {
-          console.log('this is the results ', results);
+          console.log('MODEL REsLTs ', results);
           callback(null, results);
         }
-      })
-      // db.connection.query('SELECT * from messages', (err,results,fields)=>{
-      //   if(err) {
-      //     throw err;
-      //   } else {
-      //     console.log('success');
-      //   }
-      // });
-    }, // a function which produces all the messages
-    post: function () {
-      db.connection.query('SELECT * from messages', (err,results,fields)=>{
-        if(err) {
-          throw err;
-        } else {
-          console.log('success');
-        }
       });
-    }
+    }, // a function which produces all the messages
+
+    post: function (data, callback) {
+      db.connection.query('INSERT into messages SET ?', data, (err,results,fields)=>{
+          if(err){
+              callback(err);
+          }
+          else{
+            callback(null,results);
+          }
+      });
      // a function which can be used to insert a message into the database
+    },
   },
 
   users: {
     // Ditto as above.
     get: function () {},
+
     post: function () {}
   }
 };
